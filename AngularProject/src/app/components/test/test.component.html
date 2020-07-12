@@ -1,0 +1,40 @@
+<body class='mat-app-background'>
+    <div class='container'>
+        <div class="row">
+            <div class="col-lg-12 text-center" *ngIf='(test.length === 0)'>
+                <h1>No tests to show</h1>
+            </div>
+        </div>
+        <!-- <div *ngIf="test" class="text-center">
+                {{test|json}}
+                
+            </div> -->
+        <form [formGroup]='testQuestions' (ngSubmit)='onSubmit()'>
+            <div *ngFor="let question of testQuestions.controls">
+                <div class="row">
+                    <ng-container [formGroup]='question'>
+                        <div class="col-lg-6 text-center">
+                            <label>
+                                <h4>Question : {{ question.get('ques').value }}</h4>
+                            </label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Answer : </label>
+                            <input class="form-control" type="text" formControlName='ans'
+                                placeholder="Enter answer here" required/>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="row text-center">
+                <h3><button mat-raised-button class="text-center" [disabled]='!testQuestions.valid'> Submit </button></h3>
+            </div>
+
+        </form>
+        <div class="row text-center">
+            <!-- {{testQuestions.value | json}} -->
+        </div>
+        
+    </div>
+
+</body>

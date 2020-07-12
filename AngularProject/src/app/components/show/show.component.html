@@ -1,0 +1,29 @@
+<body class='mat-app-background'>
+    <div class="container">
+        <div class="row" *ngIf='test.length === 0'>
+            <div class="col-lg-12 text-center">
+                <h1>No test data to show</h1>
+            </div>
+        </div>
+        <div>
+            <form [formGroup]='completedQuestions'>
+                <div *ngFor="let question of completedQuestions.controls">
+                    <div class="row">
+                        <ng-container [formGroup]='question'>
+                            <div class="col-lg-4">
+                                <h4>Question : {{question.get('ques').value}}</h4>
+                            </div>
+                            <div class="col-lg-4">
+                                <h4>Your Answer : {{question.get('ans').value}}</h4>
+                            </div>
+                            <div class="col-lg-4" [style.backgroundColor]="question.get('ans').value.toLowerCase() === (question.get('correctAns').value).toLowerCase()?'green':'red'">
+                                <h4>Correct Answer : {{ question.get('correctAns').value }}</h4>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </form>
+            <!-- {{completedQuestions.value | json}} -->
+        </div>
+    </div>
+</body>
