@@ -5,8 +5,8 @@
     <classes>
       <class name="com.project.SeleniumProject">
         <methods>
+          <include name="search"/>
           <include name="setupDriver"/>
-          <include name="register"/>
         </methods>
       </class> <!-- com.project.SeleniumProject -->
     </classes>
